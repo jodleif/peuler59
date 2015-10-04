@@ -32,8 +32,8 @@ int main()
 	split->split3 = xor_decrypt::everynth(encrypted_file, 2, 3);
 	auto res = xor_decrypt::find_keys(split.get());
 	auto analyzed = xor_decrypt::perform_statistical_analysis(split.get(), res);
-	auto most_likely_pw = analyzed[0].key;
+	auto most_likely_pw = analyzed.key;
 	auto decrypted = xor_decrypt::decrypt(split.get(),most_likely_pw);
-	std::cout << decrypted;
+	std::cout << decrypted << "\n";
 	return 0;
 }
