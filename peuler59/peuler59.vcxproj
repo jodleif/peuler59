@@ -148,10 +148,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="decrypt\decrypt.cpp" />
+    <ClCompile Include="fileio\csv.cpp" />
     <ClCompile Include="fileio\fileio.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="decrypt\decrypt.h" />
+    <ClInclude Include="fileio\csv.h" />
     <ClInclude Include="fileio\fileio.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

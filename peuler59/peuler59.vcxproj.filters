@@ -21,9 +21,21 @@
     <ClCompile Include="fileio\fileio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fileio\csv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="decrypt\decrypt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fileio\fileio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fileio\csv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="decrypt\decrypt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
