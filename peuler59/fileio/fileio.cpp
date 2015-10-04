@@ -14,8 +14,10 @@ std::vector<char> xor_decrypt::fileio::read_file(const std::string filename)
 			result = string_into_vector(result, string_buffer);
 			string_buffer.clear(); // empty string after read
 		}
+		file_in.close();
 	} else {
 		std::cerr << "[xor_decrypt::fileio::read_file] Could not open file! " << filename << std::endl;
+		std::abort();
 	}
 	return result;
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 #include "fileio/csv.h"
+#include "decrypt/decrypt.h"
+#include <memory>
 
 /*
 Each character on a computer is assigned a unique code and the preferred standard is ASCII 
@@ -24,5 +26,14 @@ int main()
 {
 	std::cout << "XOR - decrypt\n";
 	auto encrypted_file = xor_decrypt::fileio::read_csv("p059_cipher.txt");
+	auto split = std::make_unique<xor_decrypt::split_encrypt>();
+	split->split1 = xor_decrypt::everynth(encrypted_file, 0, 3);
+	split->split2 = xor_decrypt::everynth(encrypted_file, 1, 3);
+	split->split3 = xor_decrypt::everynth(encrypted_file, 2, 3);
+	auto res = xor_decrypt::find_keys(split.get());
+	auto analyzed = xor_decrypt::perform_statistical_analysis(split.get(), res);
+	auto most_likely_pw = analyzed[0].key;
+	auto decrypted = xor_decrypt::decrypt(split.get(),most_likely_pw);
+	std::cout << decrypted;
 	return 0;
 }
