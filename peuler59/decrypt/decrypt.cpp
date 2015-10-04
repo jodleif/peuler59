@@ -128,27 +128,28 @@ void xor_decrypt::analyze_key(const std::vector<char>& split, float& stats, char
 	stats = percentage_regular_char;
 }
 
-std::string xor_decrypt::decrypt(const xor_decrypt::split_encrypt* split, std::string key)
+std::vector<char> xor_decrypt::decrypt(const xor_decrypt::split_encrypt* split, std::string key)
 {
-	std::string part1, part2, part3;
+	std::vector<char> part1, part2, part3;
 	auto t1 = std::thread(inplace_decrypt,std::ref(split->split1), std::ref(part1), key[0]);
 	auto t2 = std::thread(inplace_decrypt, std::ref(split->split2), std::ref(part2), key[1]);
 	auto t3 = std::thread(inplace_decrypt, std::ref(split->split3), std::ref(part3), key[2]);
 	t1.join();t2.join();t3.join();
-	return merge_strings(part1, part2, part3);
+	return merge_vectors(part1, part2, part3);
 
 }
 
-void xor_decrypt::inplace_decrypt(const std::vector<char>& to_dec, std::string& decrypted, char key_ch)
+void xor_decrypt::inplace_decrypt(const std::vector<char>& to_dec, std::vector<char>& decrypted, char key_ch)
 {
+	decrypted.reserve(to_dec.size());
 	for(auto& elem : to_dec) {
-		decrypted+=(elem^key_ch);
+		decrypted.push_back(elem^key_ch);
 	}
 }
 
-std::string xor_decrypt::merge_strings(const std::string& str1, const std::string& str2, const std::string& str3)
+std::vector<char> xor_decrypt::merge_vectors(const std::vector<char>& str1, const std::vector<char>& str2, const std::vector<char>& str3)
 {
-	std::string result;
+	std::vector<char> result;
 	result.reserve(str1.size() + str2.size() + str3.size());
 	auto min_length = std::min(str1.size(), str2.size());
 	min_length = std::min(min_length, str3.size());

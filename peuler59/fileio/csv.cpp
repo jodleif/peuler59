@@ -30,6 +30,9 @@ std::vector<char> xor_decrypt::fileio::strip_separator(const std::vector<char>& 
 			}
 		}
 	}
+	if(buff!=0) {
+		result.push_back(static_cast<char>(buff));
+	}
 	result.shrink_to_fit();
 	return result;
 }

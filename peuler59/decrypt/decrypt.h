@@ -32,7 +32,7 @@ namespace xor_decrypt
 	key_stats perform_statistical_analysis(const xor_decrypt::split_encrypt* split, const std::vector<std::unique_ptr<std::vector<char>>> & keys);
 	void analyze_keys(const std::vector<char>& split, std::vector<code_pair>& to_store_stat, std::vector<char>* keys);
 	void analyze_key(const std::vector<char>& split, float& stats, char key);
-	std::string decrypt(const split_encrypt* split, std::string key);
-	void inplace_decrypt(const std::vector<char>& to_dec, std::string& decrypted, char key_ch);
-	std::string merge_strings(const std::string& str1, const std::string& str2, const std::string& str3);
+	std::vector<char> decrypt(const split_encrypt* split, std::string key);
+	void inplace_decrypt(const std::vector<char>& to_dec, std::vector<char>& decrypted, char key_ch);
+	std::vector<char> merge_vectors(const std::vector<char>& str1, const std::vector<char>& str2, const std::vector<char>& str3);
 }

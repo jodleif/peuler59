@@ -34,6 +34,11 @@ int main()
 	auto analyzed = xor_decrypt::perform_statistical_analysis(split.get(), res);
 	auto most_likely_pw = analyzed.key;
 	auto decrypted = xor_decrypt::decrypt(split.get(),most_likely_pw);
-	std::cout << decrypted << "\n";
+	int sum{ 0 };
+	for(const auto& elem : decrypted) {
+		sum += elem;
+	}
+	std::cout << "Sum of characters in decrypted message: " << sum << "\n";
+	//std::cout << decrypted << "\n";
 	return 0;
 }
