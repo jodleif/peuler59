@@ -2,6 +2,7 @@
 #include <thread>
 #include <algorithm>
 #include <iostream>
+#include "../util/bubblesort.h"
 
 std::vector<std::unique_ptr<std::vector<char>>> xor_decrypt::find_keys(const xor_decrypt::split_encrypt* split)
 {
@@ -109,10 +110,12 @@ void xor_decrypt::analyze_keys(const std::vector<char>& split, std::vector<xor_d
 		analyze_key(std::ref(split), std::ref(to_store_res), key);
 		to_store_stat.push_back(xor_decrypt::code_pair{ key , to_store_res });
 	}
-
+	/*
 	std::sort(to_store_stat.begin(), to_store_stat.end(), [](const xor_decrypt::code_pair& elem1, const xor_decrypt::code_pair& elem2) {
 		return elem1.percent_reg_chars > elem2.percent_reg_chars;
-	});
+	});*/
+	xor_decrypt::algo::bubblesort(std::ref(to_store_stat));
+
 }
 
 void xor_decrypt::analyze_key(const std::vector<char>& split, float& stats, char key)

@@ -27,6 +27,9 @@
     <ClCompile Include="decrypt\decrypt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="util\bubblesort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fileio\fileio.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="decrypt\decrypt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util\bubblesort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
